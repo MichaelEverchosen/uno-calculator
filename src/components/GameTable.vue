@@ -6,14 +6,17 @@
         <tr>
           <th>Игрок</th>
           <th>Очки</th>
-          <th></th>
+          <th>Ред./Доб. очки</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(player, idx) in players" :key="idx">
           <td>{{ player.name }}</td>
           <td>{{ player.score }}</td>
-          <td></td>
+          <td>
+            <input v-model="player.scorePerRound" type="text" />
+            <button @click="addScore(idx)">+</button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -28,6 +31,11 @@ export default {
     },
     players() {
       return this.$store.getters.getPlayers;
+    },
+  },
+  methods: {
+    addScore(idx) {
+      this.$store.commit("addRoundScore", idx);
     },
   },
 };

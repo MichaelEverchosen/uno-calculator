@@ -5,7 +5,6 @@ import router from "./router";
 import store from "@/store/uno.js";
 
 import "@/assets/main.css";
-import { injectProp } from "@vue/compiler-core";
 
 const app = createApp(App);
 

@@ -1,23 +1,27 @@
 import Vuex from "vuex";
-let store;
-export default store = new Vuex.Store({
+
+const store = new Vuex.Store({
   state: {
     players: [
       {
         name: "Boris0",
         score: 0,
+        scorePerRound: 0,
       },
       {
         name: "Boris1",
         score: 0,
+        scorePerRound: 0,
       },
       {
         name: "Boris2",
         score: 0,
+        scorePerRound: 0,
       },
       {
         name: "Boris3",
         score: 0,
+        scorePerRound: 0,
       },
     ],
     maxScore: 500,
@@ -32,6 +36,10 @@ export default store = new Vuex.Store({
     setMaxScore(state, maxScore) {
       state.maxScore = Number(maxScore);
     },
+    addRoundScore(state, idx) {
+      state.players[idx].score =
+        state.players[idx].score + Number(state.players[idx].scorePerRound);
+    },
   },
   getters: {
     getPlayers(state) {
@@ -42,3 +50,5 @@ export default store = new Vuex.Store({
     },
   },
 });
+
+export default store;
