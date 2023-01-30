@@ -9,6 +9,7 @@
 <script>
 import GameSettings from "@/components/GameSettings.vue";
 import GameTable from "@/components/GameTable.vue";
+
 export default {
   components: {
     GameSettings,

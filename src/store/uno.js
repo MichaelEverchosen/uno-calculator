@@ -4,24 +4,24 @@ const store = new Vuex.Store({
   state: {
     players: [
       {
-        name: "Boris0",
+        name: "Boris-Животное №0",
         score: 0,
-        scorePerRound: 0,
+        scorePerRound: "",
       },
       {
-        name: "Boris1",
+        name: "Boris-Животное №1",
         score: 0,
-        scorePerRound: 0,
+        scorePerRound: "",
       },
       {
-        name: "Boris2",
+        name: "Boris-Животное №2",
         score: 0,
-        scorePerRound: 0,
+        scorePerRound: "",
       },
       {
-        name: "Boris3",
+        name: "Boris-Животное №3",
         score: 0,
-        scorePerRound: 0,
+        scorePerRound: "",
       },
     ],
     maxScore: 500,
@@ -30,15 +30,32 @@ const store = new Vuex.Store({
     addPlayer(state, playerName) {
       state.players.push({
         name: playerName,
-        score: 0,
+        score: "",
       });
     },
     setMaxScore(state, maxScore) {
       state.maxScore = Number(maxScore);
     },
-    addRoundScore(state, idx) {
+    addScoreToPlayer(state, idx) {
       state.players[idx].score =
         state.players[idx].score + Number(state.players[idx].scorePerRound);
+    },
+    addRoundScoreToPlayers(state) {
+      state.players = state.players.map((player) => {
+        player.score = player.score + Number(player.scorePerRound);
+        player.scorePerRound = "";
+        return player;
+      });
+    },
+    setDefaultScoreToPlayers(state) {
+      state.players = state.players.map((player) => {
+        player.score = 0;
+        player.scorePerRound = "";
+        return player;
+      });
+    },
+    deletePlayer(state, idx) {
+      state.players.splice(idx, 1);
     },
   },
   getters: {
