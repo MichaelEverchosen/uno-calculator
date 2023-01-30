@@ -18,7 +18,7 @@ export default {
   data() {
     return {
       playerName: "",
-      score: 0,
+      score: "",
     };
   },
   methods: {
@@ -27,6 +27,7 @@ export default {
     },
     setMaxScore() {
       this.$store.commit("setMaxScore", this.score);
+      this.score = "";
     },
   },
 };

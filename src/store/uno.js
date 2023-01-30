@@ -7,21 +7,25 @@ const store = new Vuex.Store({
         name: "Boris-Животное №0",
         score: 0,
         scorePerRound: "",
+        scoresPerRounds: [],
       },
       {
         name: "Boris-Животное №1",
         score: 0,
         scorePerRound: "",
+        scoresPerRounds: [],
       },
       {
         name: "Boris-Животное №2",
         score: 0,
         scorePerRound: "",
+        scoresPerRounds: [],
       },
       {
         name: "Boris-Животное №3",
         score: 0,
         scorePerRound: "",
+        scoresPerRounds: [],
       },
     ],
     maxScore: 500,
@@ -43,6 +47,7 @@ const store = new Vuex.Store({
     addRoundScoreToPlayers(state) {
       state.players = state.players.map((player) => {
         player.score = player.score + Number(player.scorePerRound);
+        player.scoresPerRounds.push(player.scorePerRound);
         player.scorePerRound = "";
         return player;
       });
@@ -51,6 +56,7 @@ const store = new Vuex.Store({
       state.players = state.players.map((player) => {
         player.score = 0;
         player.scorePerRound = "";
+        player.scoresPerRounds = [];
         return player;
       });
     },
