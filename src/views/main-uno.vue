@@ -8,6 +8,9 @@
     <div>
       <HistoryRounds></HistoryRounds>
     </div>
+    <div>
+      <GameLegend></GameLegend>
+    </div>
   </div>
 </template>
 
@@ -15,12 +18,14 @@
 import GameSettings from "@/components/GameSettings.vue";
 import GameTable from "@/components/GameTable.vue";
 import HistoryRounds from "@/components/HistoryRounds.vue";
+import GameLegend from "@/components/GameLegend.vue";
 
 export default {
   components: {
     GameSettings,
     GameTable,
     HistoryRounds,
+    GameLegend,
   },
 };
 </script>
@@ -28,6 +33,6 @@ export default {
 <style scoped>
 .uno {
   display: grid;
-  grid-template: auto/ 1fr 1fr;
+  grid-template-columns: auto auto 100px;
 }
 </style>
