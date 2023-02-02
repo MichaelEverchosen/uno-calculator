@@ -40,10 +40,6 @@ const store = new Vuex.Store({
     setMaxScore(state, maxScore) {
       state.maxScore = Number(maxScore);
     },
-    addScoreToPlayer(state, idx) {
-      state.players[idx].score =
-        state.players[idx].score + Number(state.players[idx].scorePerRound);
-    },
     addRoundScoreToPlayers(state) {
       state.players = state.players.map((player) => {
         player.score = player.score + Number(player.scorePerRound);
@@ -63,6 +59,11 @@ const store = new Vuex.Store({
     deletePlayer(state, idx) {
       state.players.splice(idx, 1);
     },
+    // editPlayersScore(state) {
+    //   state.players = state.players.map((player) => {
+    //     player.
+    //     return player;
+    // }
   },
   getters: {
     getPlayers(state) {

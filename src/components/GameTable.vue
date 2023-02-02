@@ -15,14 +15,15 @@
           <td>{{ player.score }}</td>
           <td>
             <input v-model="player.scorePerRound" type="text" />
-            <button @click="addScore(idx)">+</button>
-          </td>
-          <td>
-            <button @click="toggleModal('delete-player', idx)">Х</button>
           </td>
         </tr>
       </tbody>
     </table>
+    <div>
+      <button @click="toggleModal('editing-results')">
+        Редактирование очков игрока
+      </button>
+    </div>
     <div>
       <button @click="finishRound">Завершить раунд</button>
       <button @click="toggleModal('finish-game')">Завершить игру</button>
@@ -38,16 +39,22 @@
         <button @click="deletePlayer">Удалить</button>
         <button @click="toggleModal()">Отмена</button>
       </div>
+      <EditWindow
+        v-if="activeModalName === 'editing-results'"
+        @close="toggleModal()"
+      ></EditWindow>
     </ModalWindow>
   </div>
 </template>
 
 <script>
 import ModalWindow from "@/components/ModalWindow.vue";
+import EditWindow from "@/components/EditWindow.vue";
 
 export default {
   components: {
     ModalWindow,
+    EditWindow,
   },
   data() {
     return {
@@ -64,9 +71,6 @@ export default {
     },
   },
   methods: {
-    addScore(idx) {
-      this.$store.commit("addScoreToPlayer", idx);
-    },
     finishRound() {
       this.$store.commit("addRoundScoreToPlayers");
     },
@@ -80,6 +84,10 @@ export default {
     },
     deletePlayer() {
       this.$store.commit("deletePlayer", this.activePlayerIdx);
+      this.toggleModal();
+    },
+    EditingGlasses() {
+      this.$store.commit("setDefaultScoreToPlayers");
       this.toggleModal();
     },
   },
