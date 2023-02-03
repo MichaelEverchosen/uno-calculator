@@ -2,18 +2,17 @@
   <div>
     <p>Редактирование очков</p>
     <div>
-      <table>
+      <table class="table">
         <thead>
           <tr>
-            <th>Игрок</th>
-            <th>Очки</th>
+            <th>Номер раунда</th>
+          </tr>
+          <tr v-for="(player, idx) in players" :key="idx">
+            <th>{{ player.name }}</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <tr v-for="(player, idx) in players" :key="idx">
-            <th>{{ player.name }}</th>
-            </tr>
             <td v-for="round in roundsCount" :key="round">
               <b>
                 {{ round }}
@@ -25,7 +24,7 @@
               v-for="(scorePerRound, roundIdx) in player.scoresPerRounds"
               :key="roundIdx"
             >
-              {{ scorePerRound }}
+              <input type="text" v-model="player.scoresPerRounds[roundIdx]" />
             </td>
           </tr>
         </tbody>
@@ -37,6 +36,8 @@
 </template>
 
 <script>
+import _ from "lodash";
+
 export default {
   data() {
     return {
@@ -44,10 +45,12 @@ export default {
     };
   },
   beforeMount() {
-    this.players = this.$store.getters.getPlayers.map((player) => {
-      const playerCopy = { ...player };
-      return playerCopy;
-    });
+    this.players = _.cloneDeep(this.$store.getters.getPlayers);
+  },
+  computed: {
+    roundsCount() {
+      return this.players[0].scoresPerRounds.length;
+    },
   },
   methods: {
     closeModal() {
@@ -60,4 +63,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.table {
+  display: flex;
+}
+</style>

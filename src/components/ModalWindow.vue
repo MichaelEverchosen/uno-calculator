@@ -25,8 +25,7 @@ export default {};
 }
 
 .modal {
-  height: 250px;
-  width: 400px;
+  height: 300px;
   background-color: #fff;
   border: 1px solid rgb(55, 55, 55);
   border-radius: 5px;
