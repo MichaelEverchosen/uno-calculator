@@ -2,8 +2,8 @@
   <div>
     <button @click="toggleModal">Открыть легенду</button>
     <ModalWindowLegend v-if="isOpenSidebar">
-      <div>
-        В этой легенде будет очень много интересного, но пока нифига тут нет!
+      <div class="legend">
+        <LegendElements></LegendElements>
       </div>
       <button @click="toggleModal">Закрыть легенду</button>
     </ModalWindowLegend>
@@ -12,9 +12,11 @@
 
 <script>
 import ModalWindowLegend from "@/components/ModalWindowLegend.vue";
+import LegendElements from "@/components/LegendElements.vue";
 
 export default {
   components: {
+    LegendElements,
     ModalWindowLegend,
   },
 
@@ -32,4 +34,4 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped></style>

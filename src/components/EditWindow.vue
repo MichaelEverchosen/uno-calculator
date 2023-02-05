@@ -24,7 +24,11 @@
               v-for="(scorePerRound, roundIdx) in player.scoresPerRounds"
               :key="roundIdx"
             >
-              <input type="text" v-model="player.scoresPerRounds[roundIdx]" />
+              <input
+                @input="calculatePlayerScore(idx)"
+                type="number"
+                v-model="player.scoresPerRounds[roundIdx]"
+              />
             </td>
           </tr>
         </tbody>
@@ -56,7 +60,14 @@ export default {
     closeModal() {
       this.$emit("close");
     },
+    calculatePlayerScore(idx) {
+      let player = this.players[idx];
+      player.score = player.scoresPerRounds.reduce(
+        (a, b) => Number(a) + Number(b)
+      );
+    },
     editingResults() {
+      this.$store.commit("editingPlayers", this.players);
       this.closeModal();
     },
   },

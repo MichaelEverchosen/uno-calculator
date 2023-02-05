@@ -5,27 +5,27 @@ const store = new Vuex.Store({
     players: [
       {
         name: "Boris-Животное №0",
-        score: 33,
+        score: 0,
         scorePerRound: "",
-        scoresPerRounds: ["11", "22"],
+        scoresPerRounds: [],
       },
       {
         name: "Boris-Животное №1",
-        score: 33,
+        score: 0,
         scorePerRound: "",
-        scoresPerRounds: ["11", "22"],
+        scoresPerRounds: [],
       },
       {
         name: "Boris-Животное №2",
-        score: 33,
+        score: 0,
         scorePerRound: "",
-        scoresPerRounds: ["11", "22"],
+        scoresPerRounds: [],
       },
       {
         name: "Boris-Животное №3",
-        score: 33,
+        score: 0,
         scorePerRound: "",
-        scoresPerRounds: ["11", "22"],
+        scoresPerRounds: [],
       },
     ],
     maxScore: 500,
@@ -59,11 +59,9 @@ const store = new Vuex.Store({
     deletePlayer(state, idx) {
       state.players.splice(idx, 1);
     },
-    // editPlayersScore(state) {
-    //   state.players = state.players.map((player) => {
-    //     player.
-    //     return player;
-    // }
+    editingPlayers(state, editedPlayers) {
+      state.players = editedPlayers;
+    },
   },
   getters: {
     getPlayers(state) {
