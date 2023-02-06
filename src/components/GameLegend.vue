@@ -1,11 +1,11 @@
 <template>
   <div>
-    <button @click="toggleModal">Открыть легенду</button>
+    <button class="open-legend" @click="toggleModal">Открыть легенду</button>
     <ModalWindowLegend v-if="isOpenSidebar">
       <div class="legend">
         <LegendElements></LegendElements>
       </div>
-      <button @click="toggleModal">Закрыть легенду</button>
+      <button class="close-legend" @click="toggleModal">Закрыть легенду</button>
     </ModalWindowLegend>
   </div>
 </template>
@@ -34,4 +34,18 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.open-legend {
+  margin: 10px 0px 0px 10px;
+  height: 50px;
+  width: 110px;
+  border: 0px;
+  border-radius: 5px;
+}
+.close-legend {
+  height: 30px;
+  width: 200px;
+  border: 5px;
+  border-radius: 5px;
+}
+</style>

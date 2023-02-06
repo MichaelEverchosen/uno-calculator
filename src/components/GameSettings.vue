@@ -1,14 +1,22 @@
 <template>
-  <div>
-    <div class="">
-      <input v-model="score" type="number" placeholder="Количество очков" />
-      <button @click="setMaxScore">Сохранить</button>
+  <div class="gameSetting">
+    <div>
+      <input
+        class="data-field-input"
+        v-model="score"
+        type="number"
+        placeholder="Количество очков"
+      />
+      <button class="button-editing" @click="setMaxScore">Сохранить</button>
     </div>
-  </div>
-  <div>
     <div class="">
-      <input v-model="playerName" type="text" placeholder="Имя игрока" />
-      <button @click="addPlayer">Добавить</button>
+      <input
+        class="data-field-input"
+        v-model="playerName"
+        type="text"
+        placeholder="Имя игрока"
+      />
+      <button class="button-editing" @click="addPlayer">Добавить</button>
     </div>
   </div>
 </template>
@@ -33,4 +41,21 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.gameSetting {
+  display: grid;
+  padding: 20px 0px 30px 0px;
+  gap: 20px;
+}
+.data-field-input {
+  height: 30px;
+  width: 200px;
+}
+.button-editing {
+  margin-left: 20px;
+  height: 40px;
+  width: 120px;
+  border: 3px;
+  border-radius: 5px;
+}
+</style>

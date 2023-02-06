@@ -34,5 +34,12 @@ export default {
 .uno {
   display: grid;
   grid-template-columns: auto auto 100px;
+  padding-left: 50px;
+}
+
+.title {
+  margin-left: 200px;
+  font-weight: 1000;
+  font-size: 30px;
 }
 </style>

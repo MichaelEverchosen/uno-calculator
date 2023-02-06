@@ -1,14 +1,14 @@
 <template>
-  <div>
-    <div>
-      <p>История раундов</p>
+  <div class="history-rounds">
+    <div class="">
+      <p class="title-history">История раундов</p>
       <table class="table">
         <thead>
           <tr>
             <th>Номер раунда</th>
           </tr>
           <tr v-for="(player, idx) in players" :key="idx">
-            <th>{{ player.name }}</th>
+            <th class="player-name">{{ player.name }}</th>
           </tr>
         </thead>
         <tbody>
@@ -24,7 +24,7 @@
               v-for="(scorePerRound, roundIdx) in player.scoresPerRounds"
               :key="roundIdx"
             >
-              {{ scorePerRound }}
+              <p class="round">{{ scorePerRound }}</p>
             </td>
           </tr>
         </tbody>
@@ -51,7 +51,30 @@ export default {
 </script>
 
 <style scoped>
+.history-rounds {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+}
+.title-history {
+  text-align: center;
+  font-size: 30px;
+}
+
 .table {
   display: flex;
+}
+.player-name {
+  padding-top: 15px;
+  font-size: 18px;
+  font-weight: 500;
+}
+.round {
+  padding-top: 14px;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0px;
 }
 </style>
