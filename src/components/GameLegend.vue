@@ -36,6 +36,9 @@ export default {
 
 <style scoped>
 .open-legend {
+  position: fixed;
+  right: 0px;
+  top: 25px;
   margin: 10px 0px 0px 10px;
   height: 50px;
   width: 110px;

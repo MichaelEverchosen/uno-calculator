@@ -1,6 +1,6 @@
 <template>
   <div class="modal">
-    <slot>123124141</slot>
+    <slot></slot>
   </div>
 </template>
 

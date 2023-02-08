@@ -33,7 +33,7 @@ export default {
 <style scoped>
 .uno {
   display: grid;
-  grid-template-columns: auto auto 100px;
+  grid-template-columns: 1fr 1fr;
   padding-left: 50px;
 }
 

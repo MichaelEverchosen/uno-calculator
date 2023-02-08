@@ -1,6 +1,6 @@
 <template>
   <div class="history-rounds">
-    <div class="">
+    <div v-if="players.length">
       <p class="title-history">История раундов</p>
       <table class="table">
         <thead>
@@ -11,11 +11,11 @@
             <th class="player-name">{{ player.name }}</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="body-table">
           <tr>
             <td v-for="round in roundsCount" :key="round">
               <b>
-                {{ round }}
+                <p class="round">{{ round }}</p>
               </b>
             </td>
           </tr>
@@ -24,7 +24,7 @@
               v-for="(scorePerRound, roundIdx) in player.scoresPerRounds"
               :key="roundIdx"
             >
-              <p class="round">{{ scorePerRound }}</p>
+              <p class="roundScore">{{ scorePerRound }}</p>
             </td>
           </tr>
         </tbody>
@@ -55,7 +55,6 @@ export default {
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: left;
   justify-content: center;
 }
 .title-history {
@@ -66,12 +65,20 @@ export default {
 .table {
   display: flex;
 }
+.body-table {
+  text-align: center;
+}
 .player-name {
   padding-top: 15px;
   font-size: 18px;
   font-weight: 500;
 }
+
 .round {
+  margin: 0px;
+  padding: 0px 10px 0px 10px;
+}
+.roundScore {
   padding-top: 14px;
   font-size: 18px;
   font-weight: 500;

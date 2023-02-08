@@ -23,6 +23,9 @@
       <button class="btn" @click="toggleModal('editing-results')">
         Редактирование очков игрока
       </button>
+      <button class="btn" @click="toggleModal('delete-player')">
+        Удалить игрока
+      </button>
     </div>
     <div>
       <button class="btn" @click="finishRound">Завершить раунд</button>
@@ -38,17 +41,22 @@
           <button class="btn-mw" @click="toggleModal()">Отмена</button>
         </div>
       </div>
-      <div v-if="activeModalName === 'delete-player'">
-        <p>Удалить игрока?</p>
-        <div class="btn-mw">
-          <button class="btn-mw" @click="deletePlayer">Удалить</button>
-          <button class="btn-mw" @click="toggleModal()">Отмена</button>
-        </div>
-      </div>
       <EditWindow
         v-if="activeModalName === 'editing-results'"
         @close="toggleModal()"
       ></EditWindow>
+      <div v-if="activeModalName === 'delete-player'">
+        <div class="MW-deletePlayer">
+          <p>Какого игрока желаете удалить?</p>
+          <div class="player" v-for="(player, idx) in players" :key="player.id">
+            {{ player.name }}
+            <button class="delete" @click="deletePlayers(player.id)">Х</button>
+          </div>
+          <button class="btn-mw-delete , btn-mw" @click="toggleModal()">
+            Закрыть
+          </button>
+        </div>
+      </div>
     </ModalWindow>
   </div>
 </template>
@@ -96,6 +104,9 @@ export default {
       this.$store.commit("setDefaultScoreToPlayers");
       this.toggleModal();
     },
+    deletePlayers(id) {
+      this.$store.commit("deletePlayer", id);
+    },
   },
 };
 </script>
@@ -106,6 +117,7 @@ export default {
   gap: 20px;
 }
 .table {
+  padding: 20px 0px 30px;
   max-width: 600px;
   text-align: left;
 }
@@ -119,11 +131,11 @@ export default {
 }
 
 .btn {
-  height: 40px;
-  width: 200px;
+  width: 230px;
+  padding: 18px;
   border: 3px;
   border-radius: 5px;
-  margin-right: 10px;
+  margin-right: 35px;
 }
 
 .finish-game {
@@ -143,5 +155,27 @@ export default {
   padding: 15px;
   border: 3px;
   border-radius: 5px;
+}
+.delete {
+  height: 22px;
+  width: 30px;
+  border: 3px;
+  border-radius: 5px;
+}
+
+.btn-mw-delete {
+  margin-top: 15px;
+  width: 150px;
+}
+.MW-deletePlayer {
+  padding: 20px;
+  width: 400px;
+  font-size: 19px;
+}
+.player {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 10px;
 }
 </style>

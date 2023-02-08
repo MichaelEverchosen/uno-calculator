@@ -8,33 +8,41 @@ const store = new Vuex.Store({
         score: 0,
         scorePerRound: "",
         scoresPerRounds: [],
+        id: 0,
       },
       {
         name: "Boris-Животное №1",
         score: 0,
         scorePerRound: "",
         scoresPerRounds: [],
+        id: 1,
       },
       {
         name: "Boris-Животное №2",
         score: 0,
         scorePerRound: "",
         scoresPerRounds: [],
+        id: 2,
       },
       {
         name: "Boris-Животное №3",
         score: 0,
         scorePerRound: "",
         scoresPerRounds: [],
+        id: 3,
       },
     ],
+    playerCount: 0,
     maxScore: 500,
   },
   mutations: {
     addPlayer(state, playerName) {
       state.players.push({
+        id: state.playerCount++,
         name: playerName,
         score: "",
+        scorePerRound: "",
+        scoresPerRounds: [],
       });
     },
     setMaxScore(state, maxScore) {
@@ -56,7 +64,8 @@ const store = new Vuex.Store({
         return player;
       });
     },
-    deletePlayer(state, idx) {
+    deletePlayer(state, id) {
+      const idx = state.players.findIndex((player) => player.id === id);
       state.players.splice(idx, 1);
     },
     editingPlayers(state, editedPlayers) {

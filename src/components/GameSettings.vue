@@ -5,7 +5,7 @@
         class="data-field-input"
         v-model="score"
         type="number"
-        placeholder="Количество очков"
+        placeholder="Максимальное количество очков"
       />
       <button class="button-editing" @click="setMaxScore">Сохранить</button>
     </div>
@@ -29,12 +29,17 @@ export default {
       score: "",
     };
   },
+  computed: {
+    scoreAbs() {
+      return Math.abs(Number(this.score));
+    },
+  },
   methods: {
     addPlayer() {
       this.$store.commit("addPlayer", this.playerName);
     },
     setMaxScore() {
-      this.$store.commit("setMaxScore", this.score);
+      this.$store.commit("setMaxScore", this.scoreAbs);
       this.score = "";
     },
   },
@@ -49,12 +54,12 @@ export default {
 }
 .data-field-input {
   height: 30px;
-  width: 200px;
+  width: 315px;
 }
 .button-editing {
   margin-left: 20px;
-  height: 40px;
-  width: 120px;
+  height: 45px;
+  width: 150px;
   border: 3px;
   border-radius: 5px;
 }
