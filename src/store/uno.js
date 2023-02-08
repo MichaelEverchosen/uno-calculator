@@ -79,6 +79,9 @@ const store = new Vuex.Store({
     getMaxScore(state) {
       return state.maxScore;
     },
+    getRoundsCount(state) {
+      return state.players.length ? state.players[0].scoresPerRounds.length : 0;
+    },
   },
 });
 

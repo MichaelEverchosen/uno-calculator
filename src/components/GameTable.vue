@@ -20,15 +20,21 @@
       </tbody>
     </table>
     <div>
-      <button class="btn" @click="toggleModal('editing-results')">
+      <button
+        class="btn"
+        @click="toggleModal('editing-results')"
+        :disabled="isCanEditPlayersScore"
+      >
         Редактирование очков игрока
       </button>
-      <button class="btn" @click="toggleModal('delete-player')">
-        Удалить игрока
+      <button class="btn" @click="finishRound" :disabled="!isCanFinishRound">
+        Завершить раунд
       </button>
     </div>
     <div>
-      <button class="btn" @click="finishRound">Завершить раунд</button>
+      <button class="btn" @click="toggleModal('delete-player')">
+        Удалить игроков
+      </button>
       <button class="btn" @click="toggleModal('finish-game')">
         Завершить игру
       </button>
@@ -82,6 +88,19 @@ export default {
     },
     players() {
       return this.$store.getters.getPlayers;
+    },
+    isCanEditPlayersScore() {
+      return !this.$store.getters.getRoundsCount;
+    },
+    isCanFinishRound() {
+      let enteredPlayersScoreCount = 0;
+      for (let player of this.players) {
+        if (player.scorePerRound >= 0 && player.scorePerRound !== "") {
+          enteredPlayersScoreCount++;
+        }
+      }
+      if (enteredPlayersScoreCount >= this.players.length - 1) return true;
+      return false;
     },
   },
   methods: {

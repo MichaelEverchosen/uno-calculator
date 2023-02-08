@@ -46,12 +46,7 @@ export default {
       return !this.playerName.length;
     },
     isCanSetMaxScore() {
-      return !(
-        this.score >= 200 &&
-        this.score <= 1000 &&
-        !isNaN(this.score) &&
-        this.score !== ""
-      );
+      return !(this.score >= 200 && this.score <= 1000 && this.score !== "");
     },
   },
   methods: {
