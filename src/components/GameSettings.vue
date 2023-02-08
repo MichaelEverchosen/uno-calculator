@@ -5,9 +5,15 @@
         class="data-field-input"
         v-model="score"
         type="number"
-        placeholder="Максимальное количество очков"
+        placeholder="Максимальное количество очков от 200 до 1000"
       />
-      <button class="button-editing" @click="setMaxScore">Сохранить</button>
+      <button
+        class="button-editing"
+        @click="setMaxScore"
+        :disabled="isCanSetMaxScore"
+      >
+        Сохранить
+      </button>
     </div>
     <div class="">
       <input
@@ -16,7 +22,13 @@
         type="text"
         placeholder="Имя игрока"
       />
-      <button class="button-editing" @click="addPlayer">Добавить</button>
+      <button
+        class="button-editing"
+        @click="addPlayer"
+        :disabled="isCanAddPlayer"
+      >
+        Добавить
+      </button>
     </div>
   </div>
 </template>
@@ -30,16 +42,25 @@ export default {
     };
   },
   computed: {
-    scoreAbs() {
-      return Math.abs(Number(this.score));
+    isCanAddPlayer() {
+      return !this.playerName.length;
+    },
+    isCanSetMaxScore() {
+      return !(
+        this.score >= 200 &&
+        this.score <= 1000 &&
+        !isNaN(this.score) &&
+        this.score !== ""
+      );
     },
   },
   methods: {
     addPlayer() {
       this.$store.commit("addPlayer", this.playerName);
+      this.playerName = "";
     },
     setMaxScore() {
-      this.$store.commit("setMaxScore", this.scoreAbs);
+      this.$store.commit("setMaxScore", this.score);
       this.score = "";
     },
   },
