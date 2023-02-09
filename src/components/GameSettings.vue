@@ -19,6 +19,7 @@
       <input
         class="data-field-input"
         v-model="playerName"
+        maxlength="20"
         type="text"
         placeholder="Имя игрока"
       />

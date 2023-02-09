@@ -9,7 +9,7 @@
           <th class="settingContent">Ввести очки раунда</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="body-table">
         <tr v-for="(player, idx) in players" :key="idx">
           <td class="playerName">{{ player.name }}</td>
           <td class="scoreName">{{ player.score }}</td>
@@ -32,7 +32,11 @@
       </button>
     </div>
     <div>
-      <button class="btn" @click="toggleModal('delete-player')">
+      <button
+        class="btn"
+        @click="toggleModal('delete-player')"
+        :disabled="!isCanDeletePlayers"
+      >
         Удалить игроков
       </button>
       <button class="btn" @click="toggleModal('finish-game')">
@@ -54,9 +58,17 @@
       <div v-if="activeModalName === 'delete-player'">
         <div class="MW-deletePlayer">
           <p>Какого игрока желаете удалить?</p>
-          <div class="player" v-for="(player, idx) in players" :key="player.id">
-            {{ player.name }}
-            <button class="delete" @click="deletePlayers(player.id)">Х</button>
+          <div>
+            <div
+              class="players"
+              v-for="(player, idx) in players"
+              :key="player.id"
+            >
+              {{ player.name }}
+              <button class="delete" @click="deletePlayers(player.id)">
+                Х
+              </button>
+            </div>
           </div>
           <button class="btn-mw-delete , btn-mw" @click="toggleModal()">
             Закрыть
@@ -93,6 +105,7 @@ export default {
       return !this.$store.getters.getRoundsCount;
     },
     isCanFinishRound() {
+      if (this.players.length <= 1) return false;
       let enteredPlayersScoreCount = 0;
       for (let player of this.players) {
         if (player.scorePerRound >= 0 && player.scorePerRound !== "") {
@@ -101,6 +114,9 @@ export default {
       }
       if (enteredPlayersScoreCount >= this.players.length - 1) return true;
       return false;
+    },
+    isCanDeletePlayers() {
+      return this.players.length !== 0;
     },
   },
   methods: {
@@ -140,6 +156,9 @@ export default {
   max-width: 600px;
   text-align: left;
 }
+.body-table {
+  vertical-align: bottom;
+}
 .playerName {
   padding-top: 15px;
   font-size: 18px;
@@ -175,6 +194,13 @@ export default {
   border: 3px;
   border-radius: 5px;
 }
+
+.players {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  padding: 10px;
+}
 .delete {
   height: 22px;
   width: 30px;
@@ -188,13 +214,7 @@ export default {
 }
 .MW-deletePlayer {
   padding: 20px;
-  width: 400px;
+  width: 450px;
   font-size: 19px;
-}
-.player {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  padding: 10px;
 }
 </style>

@@ -40,7 +40,7 @@ const store = new Vuex.Store({
       state.players.push({
         id: state.playerCount++,
         name: playerName,
-        score: "",
+        score: 0,
         scorePerRound: "",
         scoresPerRounds: [],
       });
@@ -51,7 +51,7 @@ const store = new Vuex.Store({
     addRoundScoreToPlayers(state) {
       state.players = state.players.map((player) => {
         player.score = player.score + Number(player.scorePerRound);
-        player.scoresPerRounds.push(player.scorePerRound);
+        player.scoresPerRounds.push(Number(player.scorePerRound));
         player.scorePerRound = "";
         return player;
       });
