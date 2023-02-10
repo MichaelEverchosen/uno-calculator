@@ -7,11 +7,7 @@
         type="number"
         placeholder="Максимальное количество очков от 200 до 1000"
       />
-      <button
-        class="button-editing"
-        @click="setMaxScore"
-        :disabled="isCanSetMaxScore"
-      >
+      <button class="btn" @click="setMaxScore" :disabled="isCantSetMaxScore">
         Сохранить
       </button>
     </div>
@@ -23,11 +19,7 @@
         type="text"
         placeholder="Имя игрока"
       />
-      <button
-        class="button-editing"
-        @click="addPlayer"
-        :disabled="isCanAddPlayer"
-      >
+      <button class="btn" @click="addPlayer" :disabled="isCantAddPlayer">
         Добавить
       </button>
     </div>
@@ -43,11 +35,11 @@ export default {
     };
   },
   computed: {
-    isCanAddPlayer() {
-      return !this.playerName.length;
-    },
-    isCanSetMaxScore() {
+    isCantSetMaxScore() {
       return !(this.score >= 200 && this.score <= 1000 && this.score !== "");
+    },
+    isCantAddPlayer() {
+      return !this.playerName.length || this.$store.getters.getRoundsCount > 0;
     },
   },
   methods: {
@@ -73,11 +65,10 @@ export default {
   height: 30px;
   width: 315px;
 }
-.button-editing {
+.btn {
   margin-left: 20px;
   height: 45px;
   width: 150px;
-  border: 3px;
   border-radius: 5px;
 }
 </style>

@@ -160,18 +160,16 @@ export default {
   vertical-align: bottom;
 }
 .playerName {
-  padding-top: 15px;
+  padding-top: 30px;
   font-size: 18px;
 }
 .scoreName {
   text-align: center;
-  vertical-align: center;
 }
 
 .btn {
   width: 230px;
   padding: 18px;
-  border: 3px;
   border-radius: 5px;
   margin-right: 35px;
 }

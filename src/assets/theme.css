@@ -1,0 +1,25 @@
+.dark-theme * {
+  --active-color: #de9090;
+  --disable-color: #7c5151;
+  --main-bg: #414141;
+  --active-button: #767676;
+  --disable-button: #514e4e;
+  --active-border: #525050;
+  --disable-border: #505050;
+  --input-bg: #504c4c;
+  --border-bg: #414040;
+  --color-placeholder: #a7a2a2;
+}
+
+* {
+  --active-color: #1d1b1b;
+  --disable-color: #959494;
+  --main-bg: #f0efef;
+  --active-button: #f7f7f7;
+  --disable-button: #f0eded;
+  --active-border: #e6e5e5;
+  --disable-border: #e9e6e6;
+  --input-bg: #f5f3f3;
+  --border-bg: #d6d2d2;
+  --color-placeholder: #827f7f;
+}

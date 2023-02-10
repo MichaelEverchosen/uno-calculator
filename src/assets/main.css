@@ -1,4 +1,26 @@
 /* @import "./base.css"; */
-. {
-  background-color: blue;
+* {
+  --main-bg: #f1f1f1;
+  --active-button: rgb(247, 247, 247);
+  --disable-button: #f0eded;
+  --active-border: #e6e5e5;
+  --disable-border: #e9e6e6;
+}
+
+body {
+  background: var(--main-bg);
+}
+
+.btn {
+  background: var(--active-button);
+  border: 1px solid var(--active-border);
+}
+.btn:disabled {
+  background: var(--disable-button);
+  border: 1px solid var(--disable-border);
+}
+
+input {
+  padding-left: 10px;
+  height: 30px;
 }
