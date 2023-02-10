@@ -1,10 +1,19 @@
-<script>
-import { RouterView } from "vue-router";
-</script>
-
 <template>
-  <RouterView />
+  <div id="bg">
+    <RouterView />
+    <ThemeToggler></ThemeToggler>
+  </div>
 </template>
 
-<style scoped>
-</style>
+<script>
+import { RouterView } from "vue-router";
+import ThemeToggler from "./components/ThemeToggler.vue";
+
+export default {
+  components: {
+    ThemeToggler,
+  },
+};
+</script>
+
+<style scoped></style>

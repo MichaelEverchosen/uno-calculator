@@ -64,12 +64,13 @@ export default {
 
 .table {
   display: flex;
+  padding: 65px 0px 30px;
 }
 .body-table {
   text-align: center;
 }
 .player-name {
-  padding-top: 15px;
+  padding: 15px 0px;
   font-size: 18px;
   font-weight: 500;
 }

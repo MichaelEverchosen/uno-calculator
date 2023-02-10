@@ -26,7 +26,6 @@ export default {};
 
 .modal {
   padding: 20px;
-  background-color: #fff;
   border: 1px solid rgb(55, 55, 55);
   border-radius: 5px;
   text-align: center;

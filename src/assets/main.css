@@ -1,26 +1,56 @@
-/* @import "./base.css"; */
+@import "./theme.css";
 * {
-  --main-bg: #f1f1f1;
-  --active-button: rgb(247, 247, 247);
-  --disable-button: #f0eded;
-  --active-border: #e6e5e5;
-  --disable-border: #e9e6e6;
+  margin: 0px;
+  padding: 0px;
+  color: var(--active-color);
 }
 
-body {
+html,
+body,
+#app,
+#bg {
+  height: 100%;
+}
+
+#bg {
   background: var(--main-bg);
 }
 
 .btn {
   background: var(--active-button);
   border: 1px solid var(--active-border);
+  color: var(--active-color);
 }
+
 .btn:disabled {
   background: var(--disable-button);
   border: 1px solid var(--disable-border);
+  color: var(--disable-color);
+}
+
+.btn-mw {
+  background: var(--active-button);
+  border: 1px solid var(--active-border);
+  color: var(--active-color);
+}
+
+.btn-mw:disabled {
+  background: var(--disable-button);
+  border: 1px solid var(--disable-border);
+  color: var(--disable-color);
 }
 
 input {
+  background-color: var(--input-bg);
   padding-left: 10px;
   height: 30px;
+  border: 1px solid var(--border-bg);
+}
+
+.modal {
+  background-color: var(--main-bg);
+}
+
+input::placeholder {
+  color: var(--color-placeholder);
 }

@@ -13,7 +13,7 @@
         <tr v-for="(player, idx) in players" :key="idx">
           <td class="playerName">{{ player.name }}</td>
           <td class="scoreName">{{ player.score }}</td>
-          <td>
+          <td class="scorePerRound">
             <input v-model="player.scorePerRound" type="number" />
           </td>
         </tr>
@@ -65,12 +65,12 @@
               :key="player.id"
             >
               {{ player.name }}
-              <button class="delete" @click="deletePlayers(player.id)">
+              <button class="btn-mw ,delete" @click="deletePlayers(player.id)">
                 Х
               </button>
             </div>
           </div>
-          <button class="btn-mw-delete , btn-mw" @click="toggleModal()">
+          <button class="btn-mw-delete, btn-mw" @click="toggleModal()">
             Закрыть
           </button>
         </div>
@@ -160,11 +160,16 @@ export default {
   vertical-align: bottom;
 }
 .playerName {
-  padding-top: 30px;
   font-size: 18px;
+  padding: 15px 0px;
 }
 .scoreName {
   text-align: center;
+  vertical-align: middle;
+}
+
+.scorePerRound {
+  vertical-align: middle;
 }
 
 .btn {
@@ -197,6 +202,7 @@ export default {
   display: flex;
   gap: 20px;
   justify-content: space-between;
+  align-items: center;
   padding: 10px;
 }
 .delete {

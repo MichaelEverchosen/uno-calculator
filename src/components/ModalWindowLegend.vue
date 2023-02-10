@@ -15,7 +15,6 @@ export default {};
   bottom: 0;
   right: 0;
   width: 800px;
-  background-color: #fff;
   text-align: center;
   box-shadow: 100px 100px 100px 100px grey;
 }
